@@ -2,19 +2,19 @@
 
 require_relative '../lib/ruby_intro'
 
-describe 'Ruby intro part 1' do
-  describe '#sum' do
+describe 'Ruby intro part 1' do 
+  describe '#sum' do #describe block to group tests together
 
-    it 'returns correct sum [1 point]', points: 1 do
-      expect(sum([1, 2, 3, 4, 5])).to be_a_kind_of Integer
-      expect(sum([1, 2, 3, 4, 5])).to eq(15)
-      expect(sum([1, 2, 3, 4, -5])).to eq(5)
-      expect(sum([1, 2, 3, 4, -5, 5, -100])).to eq(-90)
+    it 'returns correct sum [1 point]', points: 1 do #test block to group together components used for testing (correct sum for this instance)
+      expect(sum([1, 2, 3, 4, 5])).to be_a_kind_of Integer#The expected sum of the array given to the function should equal an integer
+      expect(sum([1, 2, 3, 4, 5])).to eq(15)#The expected sum of the array given should equal 15
+      expect(sum([1, 2, 3, 4, -5])).to eq(5)#The expected sum of the array given should equal 5
+      expect(sum([1, 2, 3, 4, -5, 5, -100])).to eq(-90)#The expected sum of the array given should equal -90
     end
 
-    it 'works on the empty array [2 points]', points: 2 do
-      expect { sum([]) }.not_to raise_error
-      expect(sum([])).to be_zero
+    it 'works on the empty array [2 points]', points: 2 do#Test block containing the expected tests results
+      expect { sum([]) }.not_to raise_error#When provided an empty array, an error should not be thrown
+      expect(sum([])).to be_zero#If an empty array is provided, zero should be returned
     end
   end
 
