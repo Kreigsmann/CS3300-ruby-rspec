@@ -3,11 +3,33 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  return arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if(arr.size() == 1)
+    return arr.sum
+  elsif(arr.size() == 0)
+  return 0
+  end 
+  count = 0;
+
+  large1 = 0;
+  large2 = 0;
+  
+  large1= arr[0];
+  
+  while count < arr.size()
+      if (large1 < arr[count]) 
+          large2 = large1;
+          large1 = arr[count];
+      elsif( large2 < arr[count] ) 
+          large2 = arr[count];
+      end
+      count=count + 1;
+  end
+  res = large1 + large2
+  return res
 end
 
 def sum_to_n? arr, n
