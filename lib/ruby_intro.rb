@@ -12,38 +12,44 @@ def max_2_sum arr
   elsif(arr.size() == 0)
   return 0
   end 
-  count = 0;
-
-  large1 = 0;
-  large2 = 0;
-  
-  large1= arr[0];
-  
-  while count < arr.size()
-      if (large1 < arr[count]) 
-          large2 = large1;
-          large1 = arr[count];
-      elsif( large2 < arr[count] ) 
-          large2 = arr[count];
-      end
-      count=count + 1;
-  end
-  res = large1 + large2
+ 
+#sorts the array and adds the second greatest value with the greatest value
+ res = arr.sort[-2] + arr.max
+    
   return res
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  arr.sort
+  i = 0
+  while i < arr.size
+    if(arr[i] + arr[i + 1] == n)
+      return true
+    end
+    i = i + 1
+    if(i == arr.count - 1)
+     i = arr.count - 2
+    end
+  end
+return false
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  return "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+ strarr = ["A", "E", "I", "O", "U"]
+ i = 0
+ s.upcase
+ while i < strarr.size
+  if(s[1] == strarr[i])
+    return true
+  end
+ end
+ return false
 end
 
 def binary_multiple_of_4? s
@@ -53,5 +59,21 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+def initialize(isbn, price)
+  #raise argument errors if invalid data is inserted into the constructor
+  raise ArgumentError.new(
+  "Cannot enter an empty string"
+  )if isbn == ""
+  raise ArgumentError.new("Cannot enter a zero or negative price")if price <= 0
+  @isbn = isbn
+  @price = price
+end
+#accessor get method
+attr_reader :isbn
+#accessor set method
+attr_writer :isbn
+
+attr_reader :price
+attr_writer :price
+
 end
